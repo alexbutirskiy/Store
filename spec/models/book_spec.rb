@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.describe Author, type: :model do
-  required_fields = %w{ first_name last_name }
-  optional_fields = %w{ description }
+RSpec.describe Book, type: :model do
+  required_fields = %w{ title price }
+  optional_fields = %w{ short_description full_description }
   fields = required_fields + optional_fields
 
   context 'Attributes' do
@@ -20,13 +20,16 @@ RSpec.describe Author, type: :model do
 
   context 'Associations' do
     it { should  have_many(:book_authors).dependent(:destroy) }
-    it { should  have_many(:books).through(:book_authors) }
+    it { should  have_many(:authors).through(:book_authors) }
   end
 
   context 'Callbacks and methods' do
-    it 'should have #full_name method' do
-      author = build(:author)
-      expect(author.full_name).to eq "#{author.first_name} #{author.last_name}"
+    it 'should have #author_names method' do
+      author1 = build(:author)
+      author2 = build(:author)
+      book = build(:book)
+      book.authors << author1 << author2
+      expect(book.author_names).to eq "#{author1.full_name}, #{author2.full_name}"
     end
   end
 end
