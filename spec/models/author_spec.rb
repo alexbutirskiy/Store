@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Author, type: :model do
-  required_fields = %w{ first_name last_name }
-  optional_fields = %w{ description }
+  required_fields = %w(first_name last_name)
+  optional_fields = %w(description)
   fields = required_fields + optional_fields
 
   context 'Attributes' do

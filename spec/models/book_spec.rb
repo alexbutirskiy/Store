@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  required_fields = %w{ title price }
-  optional_fields = %w{ short_description full_description }
+  required_fields = %w(title price)
+  optional_fields = %w(short_description full_description)
   fields = required_fields + optional_fields
 
   context 'Attributes' do
