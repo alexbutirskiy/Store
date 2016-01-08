@@ -19,8 +19,9 @@ RSpec.describe Book, type: :model do
   end
 
   context 'Associations' do
-    it { should  have_many(:book_authors).dependent(:destroy) }
-    it { should  have_many(:authors).through(:book_authors) }
+    it { should have_many(:book_authors).dependent(:destroy) }
+    it { should have_many(:authors).through(:book_authors) }
+    it { should belong_to(:category) }
   end
 
   context 'Callbacks and methods' do
